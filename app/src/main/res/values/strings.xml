@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ComposePlayground</string>
+    <string name="label_ingredients">Ingredients</string>
+</resources>
