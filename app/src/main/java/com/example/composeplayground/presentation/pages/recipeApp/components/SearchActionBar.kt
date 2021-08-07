@@ -1,4 +1,4 @@
-package com.example.composeplayground.presentation.components
+package com.example.composeplayground.presentation.pages.recipeApp.components
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.background

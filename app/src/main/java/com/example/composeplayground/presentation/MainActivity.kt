@@ -16,7 +16,7 @@ import com.example.composeplayground.presentation.router.airlinesRouter.Airlines
 import com.example.composeplayground.presentation.router.MenuRouter
 import com.example.composeplayground.presentation.router.RouterModule
 import com.example.composeplayground.presentation.pages.MenuPage
-import com.example.composeplayground.presentation.pages.airlinesApp.AirlinesHome
+import com.example.composeplayground.presentation.pages.airlinesApp.home.AirlinesHome
 import com.example.composeplayground.presentation.pages.recipeApp.home.RecipeHomePage
 import dagger.hilt.android.AndroidEntryPoint
 

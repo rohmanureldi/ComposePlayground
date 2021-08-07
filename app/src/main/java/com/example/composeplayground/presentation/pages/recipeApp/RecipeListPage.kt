@@ -14,10 +14,10 @@ import androidx.navigation.NavController
 import com.example.composeplayground.domain.model.RecipeEntity
 import com.example.composeplayground.domain.model.UIState
 import com.example.composeplayground.presentation.MainViewModel
-import com.example.composeplayground.presentation.components.EmptyListComponent
-import com.example.composeplayground.presentation.components.IndeterminateCircularLoading
-import com.example.composeplayground.presentation.components.RecipeCard
-import com.example.composeplayground.presentation.components.SearchActionBar
+import com.example.composeplayground.presentation.globalComponents.EmptyListComponent
+import com.example.composeplayground.presentation.globalComponents.IndeterminateCircularLoading
+import com.example.composeplayground.presentation.pages.recipeApp.components.RecipeCard
+import com.example.composeplayground.presentation.pages.recipeApp.components.SearchActionBar
 import com.example.composeplayground.presentation.router.recipeRouter.RecipeRouter
 import com.example.composeplayground.ui.theme.ComposePlaygroundTheme
 

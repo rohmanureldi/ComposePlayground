@@ -1,4 +1,4 @@
-package com.example.composeplayground.presentation.pages.airlinesApp
+package com.example.composeplayground.presentation.pages.airlinesApp.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
