@@ -7,17 +7,17 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.composeplayground.domain.model.RecipeEntity
-import com.example.composeplayground.presentation.navigation.RecipeRoute
-import com.example.composeplayground.presentation.pages.RecipeListPage
-import com.example.composeplayground.presentation.pages.RecipeDetailPage
+import com.example.composeplayground.presentation.router.airlinesRouter.AirlinesRouter
+import com.example.composeplayground.presentation.router.MenuRouter
+import com.example.composeplayground.presentation.router.RouterModule
+import com.example.composeplayground.presentation.pages.MenuPage
+import com.example.composeplayground.presentation.pages.airlinesApp.AirlinesHome
+import com.example.composeplayground.presentation.pages.recipeApp.home.RecipeHomePage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,25 +33,25 @@ class MainActivity : ComponentActivity() {
 
             val navController = rememberNavController()
 
-            val clickedRecipe = remember{
-                mutableStateOf(RecipeEntity())
-            }
-
             NavHost(
                 navController = navController,
-                startDestination = RecipeRoute.RECIPE_LIST.title
+                startDestination = MenuRouter.HOME_MENU.route
             ) {
-                composable(RecipeRoute.RECIPE_LIST.title) {
-                    RecipeListPage(
+                composable(MenuRouter.HOME_MENU.route) {
+                    MenuPage(
                         navController = navController,
-                        vm = hiltViewModel(),
-                        onRecipeClick = {
-                            clickedRecipe.value = it
-                        }
+                        menuList = RouterModule.getModulesHome()
                     )
                 }
-                composable(RecipeRoute.RECIPE_DETAIL.title) {
-                    RecipeDetailPage(recipe = clickedRecipe.value)
+
+                composable(AirlinesRouter.HOME.route) {
+                    AirlinesHome()
+                }
+
+                composable(
+                    "RecipeHome"
+                ) {
+                    RecipeHomePage(recipeVm = hiltViewModel())
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.example.composeplayground.presentation.pages
+package com.example.composeplayground.presentation.pages.recipeApp
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -16,6 +16,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.example.composeplayground.domain.model.RecipeEntity
+import com.example.composeplayground.presentation.MainViewModel
 
 @Composable
 fun RecipeDetailPage(

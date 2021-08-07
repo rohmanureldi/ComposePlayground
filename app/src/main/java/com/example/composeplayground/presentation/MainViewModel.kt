@@ -16,8 +16,9 @@ class MainViewModel @Inject constructor(
     private val useCase: ApiUsecase
 ): ViewModel() {
 
-//    val recipeList = mutableStateOf<List<RecipeEntity>>(emptyList())
     val recipeList = mutableStateOf<UIState<List<RecipeEntity>>>(UIState.Default())
+
+    var clickedRecipe = mutableStateOf(RecipeEntity())
 
     val query = mutableStateOf("")
 

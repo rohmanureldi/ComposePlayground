@@ -1,4 +1,4 @@
-package com.example.composeplayground.presentation.pages
+package com.example.composeplayground.presentation.pages.recipeApp
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
@@ -18,7 +18,7 @@ import com.example.composeplayground.presentation.components.EmptyListComponent
 import com.example.composeplayground.presentation.components.IndeterminateCircularLoading
 import com.example.composeplayground.presentation.components.RecipeCard
 import com.example.composeplayground.presentation.components.SearchActionBar
-import com.example.composeplayground.presentation.navigation.RecipeRoute
+import com.example.composeplayground.presentation.router.recipeRouter.RecipeRouter
 import com.example.composeplayground.ui.theme.ComposePlaygroundTheme
 
 @ExperimentalComposeUiApi
@@ -27,8 +27,7 @@ import com.example.composeplayground.ui.theme.ComposePlaygroundTheme
 @Composable
 fun RecipeListPage(
     navController: NavController,
-    vm: MainViewModel,
-    onRecipeClick: (RecipeEntity) -> Unit
+    vm: MainViewModel
 ) {
     val searchBarVisibility = vm.testingVisibility.value
 
@@ -50,8 +49,9 @@ fun RecipeListPage(
                 },
             )
 
-            when(recipeList) {
-                is UIState.Default -> {}
+            when (recipeList) {
+                is UIState.Default -> {
+                }
                 is UIState.Error -> {
                     EmptyListComponent()
                 }
@@ -60,8 +60,11 @@ fun RecipeListPage(
                 }
                 is UIState.Sucess -> {
                     if (recipeList.data.isNotEmpty()) {
-                        ShowRecipeList(recipeList = recipeList.data, navController = navController) {
-                            onRecipeClick(it)
+                        ShowRecipeList(
+                            recipeList = recipeList.data,
+                            navController = navController
+                        ) {
+                            vm.clickedRecipe.value = it
                         }
                     } else {
                         EmptyListComponent()
@@ -90,7 +93,7 @@ private fun ShowRecipeList(
                 recipe = recipe,
             ) {
                 onRecipeClick(recipe)
-                navController.navigate(RecipeRoute.RECIPE_DETAIL.title)
+                navController.navigate(RecipeRouter.RECIPE_DETAIL.route + "/" + recipe.id)
             }
         }
     }
